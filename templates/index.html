@@ -30,6 +30,13 @@
                 <div class="card text-white bg-dark">
                     <div class="card-header">Weather App</div>
                     <div class="card-body">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {{message}}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
                         <form action="" method="post">
                             {% csrf_token %}
                             <input type="text" placeholder="Enter City:" class="form-control" name="city">
@@ -44,11 +51,12 @@
                 <!-- card start -->
                 <div class="card text-white bg-success mt-4">
                     <div class="card-body">
+                        
                         <p class="text-center"><img src="{{icon_url}}" alt=""></p>
 
                         <h1 class="card-title text-center">{{temp}}</h1>
                         
-                        <h4 class="card-text text-center">{{city_name}}</h4>
+                        <h4 class="card-text text-center">{{city_name}}, {{country}}</h4>
                     </div>
                 </div>
                 <!-- card end -->
