@@ -17,7 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
 
 
-    <title>Document</title>
+    <title>Weather</title>
 </head>
 
 <body class="h-100">
@@ -31,7 +31,8 @@
                     <div class="card-header">Weather App</div>
                     <div class="card-body">
                         <form action="" method="post">
-                            <input type="text" placeholder="Enter City:" class="form-control">
+                            {% csrf_token %}
+                            <input type="text" placeholder="Enter City:" class="form-control" name="city">
 
                             <input type="submit" value="Search" class="btn btn-outline-light mt-3">
                         </form>
@@ -41,13 +42,13 @@
 
 
                 <!-- card start -->
-                <div class="card text-white bg-dark mt-2">
+                <div class="card text-white bg-success mt-4">
                     <div class="card-body">
-                        <p class="text-center"><i class='fas fa-cloud-sun' style='font-size:60px'></i></p>
+                        <p class="text-center"><img src="{{icon_url}}" alt=""></p>
 
-                        <h1 class="card-title text-center">13 C</h1>
+                        <h1 class="card-title text-center">{{temp}}</h1>
                         
-                        <h4 class="card-text text-center">Delhi, India</h4>
+                        <h4 class="card-text text-center">{{city_name}}</h4>
                     </div>
                 </div>
                 <!-- card end -->
